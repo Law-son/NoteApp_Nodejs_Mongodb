@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Note App</title>
+</head>
+<body>
+
+    <div id="myqrModal" class="modal">
+
+        <!-- Modal1 content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="page-content">
+                  <div class="form-content">
+                        <form>
+                            <input type="hidden" name="_id" value="<%= notes._id %>">
+                            <p>
+                                <label for="title" class="modal-title">Note Title</label><br>
+                                <input type="text" name="title" id="title" class="modal-body-input" value="<%= notes.title %>">
+                            </p>
+                            <p>
+                                <label for="body" class="modal-title">Note Body</label><br>
+                                <textarea name="body" id="body" rows="3" class="modal-body-input" value="<%= notes.content %>"></textarea>
+                            </p>
+                            <p>
+                                <input type="submit" class="modal-submit" id="add-note" value="Add Note">
+                            </p>
+                        </form>
+                  </div>
+              </div>
+        </div>
+      
+    </div>
+
+
+    <div id="myqrModal1" class="modal">
+        <!-- Modal2 content -->
+        <div class="modal-content">
+          <span class="close" id="close1">&times;</span>
+          <div class="page-content">
+                  <div class="form-content">
+                        <form>
+                            <input type="hidden" name="_id" value="<%= notes._id %>">
+                            <p>
+                                <label for="title" class="modal-title">Note Title</label><br>
+                                <input type="text" name="title" id="new-title" class="modal-body-input" value="<%= notes.title %>">
+                            </p>
+                            <p>
+                                <label for="body" class="modal-title">Note Body</label><br>
+                                <textarea name="body" id="new-body" rows="3" class="modal-body-input" value="<%= notes.content %>"></textarea>
+                            </p>
+                            <p>
+                                <input type="submit" class="modal-submit" id="update-note" value="Update">
+                            </p>
+                        </form>
+                  </div>
+              </div>
+        </div>
+    </div>
+
+
+    <nav class="navbar">
+        <h1 class="header">Note</h1>
+    </nav>
+    <div class="container">
+        <div class="container-header">
+            <h2 class="header-text">Your Notes</h2>
+        </div>
+        <div class="sub-container">
+            <% for(var i=0; i < notes.length; i++){ %>
+            <div class="note-container" id="modal-btn1">
+                <h3 class="note-title" data-id='<%= notes[i]._id %>'><%= notes[i].title %></h3>
+                <div class="content-container">
+                    <p class="note-content"><%= notes[i].content %></p>
+                    <button class="del-btn" data-id='<%= notes[i]._id %>'>X</button>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    <button class="floating-btn">
+        <span class="btn-text" id="modal-btn">+</span>
+    </button>
+
+    <script src="jquery-3.6.0.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
